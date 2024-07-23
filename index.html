@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google風ページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            width: 400px;
+            padding: 10px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-bar input[type="text"]:focus {
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .buttons input[type="button"] {
+            padding: 10px 20px;
+            border: 1px solid #dfe1e5;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .buttons input[type="button"]:hover {
+            border-color: #c6c6c6;
+        }
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background-color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-button img {
+            width: 20px;
+            height: 20px;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #dfe1e5;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px;
+        }
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #202124;
+            border-radius: 4px;
+        }
+        .dropdown a:hover {
+            background-color: #f1f3f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google ロゴ">
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="検索">
+    </div>
+    <div class="buttons">
+        <input type="button" value="Google検索" onclick="searchGoogle()">
+        <input type="button" value="I'm Feeling Lucky" onclick="feelingLucky()">
+    </div>
+    <button class="menu-button" onclick="toggleDropdown()">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/menu.png" alt="メニュー">
+    </button>
+    <div class="dropdown" id="dropdown">
+        <a href="https://www.google.co.jp/imghp">画像</a>
+        <a href="https://maps.google.co.jp">マップ</a>
+        <a href="https://play.google.com/store">Play</a>
+        <a href="https://news.google.com">ニュース</a>
+        <a href="https://mail.google.com">Gmail</a>
+        <a href="https://www.google.com/drive/">ドライブ</a>
+        <a href="https://www.google.co.jp/intl/ja/about/products?tab=wh">その他のサービス</a>
+        <a href="https://www.google.co.jp/preferences">設定</a>
+        <a href="https://myaccount.google.com">アカウント</a>
+        <a href="https://sites.google.com/view/school-math-study">公式LINKver4</a>
+        <a href="https://sites.google.com/view/siawaseinstance-ver6">公式幸せOK ver6</a>
+        <a href="https://sites.google.com/view/necessary-possible-game">LINK＋</a>
+        <a href="https://padlet.com/maipumacrothorax/link-unblockers-20ag2aqebsqrqb16">LINK UNBLOCKERS</a>
+    </div>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function searchGoogle() {
+            const query = document.getElementById('searchInput').value;
+            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+        }
+
+        function feelingLucky() {
+            const query = document.getElementById('searchInput').value;
+            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}&btnI=I`;
+        }
+
+        document.getElementById('searchInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                searchGoogle();
+            }
+        });
+    </script>
+</body>
+</html>
